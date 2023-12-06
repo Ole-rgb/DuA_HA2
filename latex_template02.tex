@@ -1,0 +1,199 @@
+\documentclass[a4paper,12pt]{scrartcl}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bitte zuerst diese Variablen setzen!
+%
+\def\Nr{1}					%Hier die Nummer des Übungsblatts eintragen
+\def\NameA{Alice Müller}	%Hier den Name eintragen
+\def\MatA{1234567}			%Hier die Matrikelnummer eintragen
+\def\NameB{Bob Meier}		%Hier den Name des 2. Gruppenmitglieds eintragen
+\def\MatB{765421}			%Hier die Matrikelnummer des 2. Gruppenmitglieds eintragen
+\def\NameC{}				%Name 3. Gruppenmitglied
+\def\MatC{}					%Matrikelnummer 3. Gruppenmitglied
+\def\NameD{}				%Name 4. Gruppenmitglied
+\def\MatD{}					%Matrikelnummer 4. Gruppenmitglied
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{ifthen}
+\usepackage{enumerate}
+\usepackage{verbatim}
+\usepackage{multicol}
+\usepackage{algorithm}
+\usepackage{xcolor}
+\setlength{\marginparwidth}{2.5cm}
+\usepackage{todonotes}
+\usepackage{tikz}
+\usepackage{forest}
+\usetikzlibrary{
+	arrows,
+	arrows.meta,
+	automata,
+	calc,
+	chains,
+	trees,
+	positioning,
+	scopes,
+	decorations.pathmorphing,
+	shapes,
+	backgrounds,
+	chains,
+	}
+
+\geometry{margin=3cm, top=2.7cm}
+\renewcommand{\thesection}{\arabic{section}{.}}
+
+\begin{document}
+\begin{center}
+	\sffamily
+	\bfseries
+	\LARGE
+	Datenstrukturen und Algorithmen\\
+	\Large
+	\vspace{.2\parskip}
+	Hausübung \Nr\\
+	\normalsize\normalfont
+	WiSe 23/24
+	\vspace{.2\parskip}
+\end{center}
+
+\begin{tabular}[t]{p{4.5cm} p{3cm}}
+	\toprule
+	Name & Matrikelnummer\\
+	\midrule
+	\NameA & \MatA\\
+	\NameB & \MatB\\
+	\ifx\NameC\empty\else\NameC & \MatC\\\fi
+	\ifx\NameD\empty\else\NameD & \MatD\\\fi
+	\bottomrule
+\end{tabular}
+\hfill
+\begin{tabular}[t]{ccccc}
+	\toprule
+	A1 & A2 & A3 & Bonus & $\Sigma$ \\
+	\midrule
+	\\
+	\bottomrule	
+\end{tabular}
+\hfill\\
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ab hier bearbeiten 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Informationen zu \LaTeX{} auf z.B.: \url{https://tex.cloud.uni-hannover.de/learn}.
+
+\section*{Aufgabe 1}
+\begin{enumerate}[a)]
+	\item
+    $$
+    \renewcommand{\arraystretch}{1.5}
+    \begin{array}{|l|l|l|l|l|}
+        \hline
+        \text{ausgewählt} & \text{PriorityQueue} & \text{Knotenmenge} & \text{Gewicht} & \text{neue Kante}\\\hline
+        & & & & \\\hline
+        & & & & \\\hline
+        & & & & \\\hline
+        & & & & \\\hline
+        & & & & \\\hline
+        & & & & \\\hline
+        & & & & \\\hline
+        & & & & \\\hline
+        & & & & \\\hline
+    \end{array}
+    $$
+    \begin{center}
+        \begin{tikzpicture}[
+            baseline = (current bounding box.north),
+            x=0.8cm,
+            y=0.8cm,
+            node/.style={draw=black,circle,minimum size=2em}
+            ]
+            \node[node] (a) {a};
+            \node[node, below right = 2 of a] (d) {d};
+            \node[node, above right = 2 of d] (b) {b};
+            \node[node, below right = 2 of b] (e) {e};
+            \node[node, above right = 2 of e] (c) {c};
+            \node[node, below left  = 2 of d] (f) {f};
+            \node[node, below right = 2 of d] (g) {g};
+            \node[node, below right = 2 of e] (h) {h};
+    
+            \draw[-] (a) -- node[above=0mm] {7} (b);
+            \draw[-] (b) -- node[above=0mm] {6} (c);
+            \draw[-] (a) -- node[right=1mm] {2} (d);
+            \draw[-] (b) -- node[right=1mm] {4} (d);
+            \draw[-] (b) -- node[right=1mm] {2} (e);
+            \draw[-] (c) -- node[right=1mm] {2} (e);
+            \draw[-] (a) -- node[right=0mm] {4} (f);
+            \draw[-] (c) -- node[right=0mm] {3} (h);
+            \draw[-] (f) -- node[above=0mm] {5} (g);
+            \draw[-] (g) -- node[above=0mm] {6} (h);
+            \draw[-] (f) -- node[right=1mm] {3} (d);
+            \draw[-] (d) -- node[right=1mm] {8} (g);
+            \draw[-] (e) -- node[right=1mm] {4} (g);
+            \draw[-] (e) -- node[right=1mm] {4} (h);
+            \draw[-] (a) to[bend left, looseness=0.6] node[above=0mm] {5} (c);
+            \draw[-] (f) to[bend right, looseness=0.6] node[below=0mm] {7} (h);
+        \end{tikzpicture}
+    \end{center}
+    \item 
+\end{enumerate}
+
+
+\section*{Aufgabe 2}
+\begin{enumerate}[a)]
+	\item
+	Graphen können mit dem Tikz-Paket erstellt werden\\
+	\url{https://tex.cloud.uni-hannover.de/learn/latex/TikZ_package}\\
+	\url{https://tobiw.de/tbdm/tikz-adventskalender}
+    \begin{center}
+        \begin{tikzpicture}[
+            baseline = (current bounding box.north),
+            x=0.8cm,
+            y=0.8cm,
+            node/.style={draw=black,circle,minimum size=2em}
+            ]
+            \node[node] (a) {a};
+            \node[node, below right = 2 of a] (d) {d};
+            \node[node, above right = 2 of d] (b) {b};
+            \node[node, below right = 2 of b] (e) {e};
+            \node[node, above right = 2 of e] (c) {c};
+            \node[node, below left  = 2 of d] (f) {f};
+            \node[node, below right = 2 of d] (g) {g};
+            \node[node, below right = 2 of e] (h) {h};
+    
+            \draw[-] (a) -- node[above=0mm] {7} (b);
+            \draw[-] (b) -- node[above=0mm] {6} (c);
+            \draw[-] (a) -- node[right=1mm] {2} (d);
+            \draw[-] (b) -- node[right=1mm] {4} (d);
+            \draw[-] (b) -- node[right=1mm] {2} (e);
+            \draw[-] (c) -- node[right=1mm] {2} (e);
+            \draw[-] (a) -- node[right=0mm] {4} (f);
+            \draw[-] (c) -- node[right=0mm] {3} (h);
+            \draw[-] (f) -- node[above=0mm] {5} (g);
+            \draw[-] (g) -- node[above=0mm] {6} (h);
+            \draw[-] (f) -- node[right=1mm] {3} (d);
+            \draw[-] (d) -- node[right=1mm] {8} (g);
+            \draw[-] (e) -- node[right=1mm] {4} (g);
+            \draw[-] (e) -- node[right=1mm] {4} (h);
+            \draw[-] (a) to[bend left, looseness=0.6] node[above=0mm] {5} (c);
+            \draw[-] (f) to[bend right, looseness=0.6] node[below=0mm] {7} (h);
+        \end{tikzpicture}
+    \end{center}
+	\item
+	\item
+\end{enumerate}
+
+
+\section*{Aufgabe 3}
+\begin{enumerate}[a)]
+	\item Liste: $[58, 3, 217, 13, 365, 524, 34, 134]$
+	\item
+	\item
+\end{enumerate}
+\end{document}
